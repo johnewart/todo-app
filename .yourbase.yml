@@ -1,0 +1,17 @@
+dependencies:
+  build:
+    - go:1.13.1
+
+build_targets:
+  - name: default
+    environment:
+      - SKIPPER_IGNORE=sh dockerize.sh
+    commands:
+      - go get
+      - go build
+      - sh dockerize.sh
+
+ci:
+  builds:
+    - name: default
+      build_target: default
